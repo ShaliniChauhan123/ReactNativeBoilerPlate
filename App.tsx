@@ -12,6 +12,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { QueryClientProvider, Hydrate, QueryClient } from 'react-query';
 
 import {HomeScreen} from './components/Screens/HomeScreen';
 import {AboutScreen} from './components/Screens/AboutScreen';
@@ -21,6 +22,7 @@ import {ContactsScreen} from './components/Screens/ContactsScreen';
 
 function App(): JSX.Element {
   const Stack = createNativeStackNavigator();
+  const [queryClient] = React.useState(() => new QueryClient());
   useEffect( () => {
     // async function prepare(){
     //     try{
@@ -40,6 +42,7 @@ function App(): JSX.Element {
     SplashScreen.hide();
     },[]);
   return (
+    <QueryClientProvider client={queryClient}>
     <View style={styles.container}>
     
           
@@ -54,6 +57,7 @@ function App(): JSX.Element {
           
     
     </View>
+    </QueryClientProvider>
   );
 }
 

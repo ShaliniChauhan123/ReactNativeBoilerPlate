@@ -1,4 +1,4 @@
-schema: http://localhost:3000/api/graphql
+schema: https://qa.api.fifo.im/graphql
 documents: './client/**/*.graphql'
 generates:
   ./client/generated/graphql.ts:
